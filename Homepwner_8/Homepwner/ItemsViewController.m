@@ -10,6 +10,12 @@
 #import "ItemStore.h"
 #import "Item.h"
 
+@interface ItemsViewController()
+
+@property (nonatomic) NSArray *sectionTitle;
+
+@end
+
 @implementation ItemsViewController
 
 -(instancetype)init
@@ -20,6 +26,8 @@
             [[ItemStore sharedStore] createItem];
         }
     }
+    
+    self.sectionTitle = @[@">50", @"others"];
     return self;
 }
 
@@ -28,9 +36,24 @@
     return [self init];
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [self.sectionTitle objectAtIndex:section];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[ItemStore sharedStore] allItems]count];
+    
+    if (section == 0) {
+        return [[[ItemStore sharedStore] over50Items]count];
+    } else {
+        return [[[ItemStore sharedStore] otherItems]count];
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -40,8 +63,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
                                                             forIndexPath:indexPath];
     
-    NSArray *items = [[ItemStore sharedStore]allItems];
-    Item *item = items[indexPath.row];
+    NSArray *over50items = [[ItemStore sharedStore] over50Items];
+    NSArray *otherItems = [[ItemStore sharedStore] otherItems];
+    Item *item;
+    if (indexPath.section == 0) {
+        item = over50items[indexPath.row];
+    } else {
+        item = otherItems[indexPath.row];
+    }
+//    Item *item = items[indexPath.row];
     cell.textLabel.text = [item description];
     return cell;
 }

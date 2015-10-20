@@ -12,6 +12,8 @@
 @interface ItemStore()
 
 @property (nonatomic) NSMutableArray *privateItems;
+@property (nonatomic) NSMutableArray *privateOver50Items;
+@property (nonatomic) NSMutableArray *privateOtherItems;
 
 @end
 
@@ -38,6 +40,9 @@
     self = [super init];
     if (self) {
         _privateItems = [[NSMutableArray alloc]init];
+        _privateOver50Items = [[NSMutableArray alloc]init];
+        _privateOtherItems = [[NSMutableArray alloc]init];
+        
     }
     return self;
 }
@@ -47,10 +52,25 @@
     return self.privateItems;
 }
 
+-(NSArray *)over50Items
+{
+    return _privateOver50Items;
+}
+
+-(NSArray *)otherItems
+{
+    return _privateOtherItems;
+}
+
 -(Item *)createItem
 {
     Item *item = [Item randomItem];
     [self.privateItems addObject:item];
+    if (item.valueInDollars > 50) {
+        [_privateOver50Items addObject:item];
+    } else {
+        [_privateOtherItems addObject:item];
+    }
     return item;
 }
 

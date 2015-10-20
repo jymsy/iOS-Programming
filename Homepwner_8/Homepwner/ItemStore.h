@@ -13,6 +13,8 @@
 @interface ItemStore : NSObject
 
 @property (nonatomic, readonly) NSArray *allItems;
+@property (nonatomic, readonly) NSArray *over50Items;
+@property (nonatomic, readonly) NSArray *otherItems;
 
 -(Item *)createItem;
 +(instancetype)sharedStore;
