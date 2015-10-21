@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		066C77771BD73B5F009021E0 /* 003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 066C77761BD73B5F009021E0 /* 003.jpg */; settings = {ASSET_TAGS = (); }; };
 		06B0D1871BD3A23800445030 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B0D1861BD3A23800445030 /* main.m */; };
 		06B0D18A1BD3A23800445030 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B0D1891BD3A23800445030 /* AppDelegate.m */; };
 		06B0D18C1BD3A23800445030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B0D18B1BD3A23800445030 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		066C77761BD73B5F009021E0 /* 003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 003.jpg; sourceTree = "<group>"; };
 		06B0D1821BD3A23800445030 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B0D1861BD3A23800445030 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		06B0D1881BD3A23800445030 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				06B0D19A1BD3AB5000445030 /* Item.m */,
 				06B0D19C1BD3AEF400445030 /* ItemStore.h */,
 				06B0D19D1BD3AEF400445030 /* ItemStore.m */,
+				066C77761BD73B5F009021E0 /* 003.jpg */,
 				06B0D18B1BD3A23800445030 /* Assets.xcassets */,
 				06B0D18D1BD3A23800445030 /* LaunchScreen.storyboard */,
 				06B0D1901BD3A23800445030 /* Info.plist */,
@@ -144,6 +147,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				066C77771BD73B5F009021E0 /* 003.jpg in Resources */,
 				06B0D18C1BD3A23800445030 /* Assets.xcassets in Resources */,
 				06B0D18F1BD3A23800445030 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -299,6 +303,7 @@
 				06B0D1951BD3A23800445030 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

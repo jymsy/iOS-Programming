@@ -28,6 +28,9 @@
     }
     
     self.sectionTitle = @[@">50", @"others"];
+    UIImageView *backImageView=[[UIImageView alloc]initWithFrame:self.view.bounds];
+    [backImageView setImage:[UIImage imageNamed:@"003.jpg"]];
+    self.tableView.backgroundView=backImageView;
     return self;
 }
 
@@ -52,7 +55,23 @@
     if (section == 0) {
         return [[[ItemStore sharedStore] over50Items]count];
     } else {
-        return [[[ItemStore sharedStore] otherItems]count];
+        return [[[ItemStore sharedStore] otherItems]count] +1;
+    }
+}
+
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    UIView* myView = [[UIView alloc] init];
+//    myView.backgroundColor = [UIColor clearColor];
+//    return myView;
+//}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1&& indexPath.row == [[[ItemStore sharedStore] otherItems]count]) {
+        return 44.0;
+    } else {
+        return 60.0;
     }
 }
 
@@ -62,14 +81,20 @@
 //                                                   reuseIdentifier:@"UITableViewCell"];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
                                                             forIndexPath:indexPath];
-    
+    cell.backgroundColor = [UIColor clearColor];//背景透明，能够显示背景图
+
     NSArray *over50items = [[ItemStore sharedStore] over50Items];
     NSArray *otherItems = [[ItemStore sharedStore] otherItems];
     Item *item;
     if (indexPath.section == 0) {
         item = over50items[indexPath.row];
     } else {
-        item = otherItems[indexPath.row];
+        if ([otherItems count] == indexPath.row) {
+            cell.textLabel.text = @"No more items!";
+            return cell;
+        } else {
+            item = otherItems[indexPath.row];
+        }
     }
 //    Item *item = items[indexPath.row];
     cell.textLabel.text = [item description];
