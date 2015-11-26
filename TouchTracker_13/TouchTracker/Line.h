@@ -13,5 +13,7 @@
 
 @property (nonatomic) CGPoint begin;
 @property (nonatomic) CGPoint end;
+@property (nonatomic) CGFloat width;
+@property (nonatomic) NSTimeInterval startTime;
 
 @end

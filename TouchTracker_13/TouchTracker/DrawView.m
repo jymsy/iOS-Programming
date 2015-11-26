@@ -16,6 +16,7 @@
 
 @property (nonatomic, weak) Line *selectedLine;
 @property (nonatomic, strong) UIPanGestureRecognizer *moveRecognizer;
+@property (nonatomic) BOOL moveCheck;
 @end
 
 @implementation DrawView
@@ -24,6 +25,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.moveCheck = NO;
         self.finishedLines = [[NSMutableArray alloc] init];
         self.linesInProgress = [[NSMutableDictionary alloc] init];
         self.backgroundColor = [UIColor grayColor];
@@ -54,9 +56,15 @@
 -(void)moveLine:(UIPanGestureRecognizer *)gr
 {
     NSLog(@"move line");
-    if (!self.selectedLine || self.selectedLine != [self lineAtPoint:[gr locationInView:self]]) {
-        self.selectedLine = nil;
-         [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+    if (self.selectedLine && self.moveCheck) {
+        self.moveCheck = NO;
+        if (self.selectedLine != [self lineAtPoint:[gr locationInView:self]]) {
+            self.selectedLine = nil;
+            [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+            return;
+        }
+    }
+    if (!self.selectedLine) {
         return;
     }
     NSLog(@"selected line");
@@ -89,11 +97,13 @@
 
 -(void)longPress:(UIGestureRecognizer *)gr
 {
+    NSLog(@"long press");
     if (gr.state == UIGestureRecognizerStateBegan) {
         CGPoint point = [gr locationInView:self];
         self.selectedLine = [self lineAtPoint:point];
         
         if (self.selectedLine) {
+            self.moveCheck = YES;
             [self.linesInProgress removeAllObjects];
         }
     } else if(gr.state == UIGestureRecognizerStateEnded) {
@@ -128,6 +138,7 @@
     self.selectedLine = [self lineAtPoint:p];
     
     if (self.selectedLine) {
+        self.moveCheck = YES;
         [self becomeFirstResponder];
         
         UIMenuController *menu = [UIMenuController sharedMenuController];
@@ -137,6 +148,7 @@
         [menu setTargetRect:CGRectMake(p.x, p.y, 2,2) inView:self];
         [menu setMenuVisible:YES animated:YES];
     }else{
+        self.moveCheck = NO;
         [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
     }
     
@@ -167,6 +179,7 @@
 {
     UIBezierPath *bp = [UIBezierPath bezierPath];
     bp.lineWidth=10;
+//    bp.lineWidth = line.width;
     bp.lineCapStyle = kCGLineCapRound;//线的两端是半圆
     
     [bp moveToPoint:line.begin];
@@ -211,6 +224,10 @@
         line.begin = location;
         line.end = location;
         
+        NSTimeInterval sec = [[NSDate date] timeIntervalSince1970];
+        NSLog(@"%f", sec);
+        line.startTime = sec;
+        
         self.linesInProgress[[NSValue valueWithNonretainedObject:t]] = line;
     }
     
@@ -242,6 +259,11 @@
     NSLog(@"%@", NSStringFromSelector(_cmd));
     for (UITouch *t in touches) {
         Line *line =  self.linesInProgress[[NSValue valueWithNonretainedObject:t]];
+        NSTimeInterval endTime = [[NSDate date] timeIntervalSince1970];
+        CGFloat length = hypot(line.end.x - line.begin.x, line.end.y - line.begin.y);
+        CGFloat speed = length / (endTime - line.startTime);
+        NSLog(@"speed:%f", speed);
+        line.width = speed / 100;
         [self.finishedLines addObject:line];
         [self.linesInProgress removeObjectForKey:[NSValue valueWithNonretainedObject:t]];
     }
