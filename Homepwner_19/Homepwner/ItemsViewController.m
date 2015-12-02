@@ -127,6 +127,11 @@
     cell.nameLabel.text =[item description];
     cell.serialNumberLabel.text = item.serialNumber;
     cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+    if (item.valueInDollars > 50) {
+        cell.valueLabel.textColor = [UIColor greenColor];
+    } else {
+        cell.valueLabel.textColor = [UIColor blackColor];
+    }
     if (item.thumbnail) {
         NSLog(@"has thumbnail");
     }
