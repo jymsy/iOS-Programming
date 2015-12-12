@@ -8,6 +8,7 @@
 
 #import "CoursesViewController.h"
 #import "WebViewController.h"
+#import "CourseCell.h"
 
 @interface CoursesViewController () <NSURLSessionDataDelegate>
 
@@ -39,10 +40,9 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    UINib *nib = [UINib nibWithNibName:@"CourseCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"CourseCell"];
 }
 
 -(void)fetchFeed
@@ -87,9 +87,15 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    CourseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CourseCell" forIndexPath:indexPath];
     NSDictionary *course = self.courses[indexPath.row];
-    cell.textLabel.text = course[@"title"];
+    cell.title.text = course[@"title"];
+//    cell.startTdate.text = course[]
+    NSArray *upcoming = course[@"upcoming"];
+    if ([upcoming count] >0) {
+        cell.startDate.text = upcoming[0][@"start_date"];
+    }
+    
     return cell;
 }
 

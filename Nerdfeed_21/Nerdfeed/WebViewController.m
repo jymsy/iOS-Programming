@@ -37,7 +37,7 @@
 -(void)loadView
 {
     _webView = [[UIWebView alloc]init];
-    _webView.scalesPageToFit = YES;	
+    _webView.scalesPageToFit = YES;
     _webView.delegate = self;
     self.view = _webView;
 }
