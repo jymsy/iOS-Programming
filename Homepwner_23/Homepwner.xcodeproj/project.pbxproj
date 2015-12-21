@@ -12,6 +12,8 @@
 		068430121C1EF49B00EAE723 /* Item+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0684300F1C1EF49B00EAE723 /* Item+CoreDataProperties.m */; };
 		068430131C1EF49B00EAE723 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 068430111C1EF49B00EAE723 /* Item.m */; };
 		068430161C22E59900EAE723 /* AssetTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068430151C22E59900EAE723 /* AssetTypeViewController.m */; };
+		068430191C27A1CD00EAE723 /* AssetTypeNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068430181C27A1CD00EAE723 /* AssetTypeNewViewController.m */; };
+		0684301B1C27A6BD00EAE723 /* AssetTypeNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0684301A1C27A6BD00EAE723 /* AssetTypeNewViewController.xib */; };
 		06B0D1871BD3A23800445030 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B0D1861BD3A23800445030 /* main.m */; };
 		06B0D18A1BD3A23800445030 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B0D1891BD3A23800445030 /* AppDelegate.m */; };
 		06B0D18C1BD3A23800445030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B0D18B1BD3A23800445030 /* Assets.xcassets */; };
@@ -36,6 +38,9 @@
 		068430111C1EF49B00EAE723 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		068430141C22E59900EAE723 /* AssetTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetTypeViewController.h; sourceTree = "<group>"; };
 		068430151C22E59900EAE723 /* AssetTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetTypeViewController.m; sourceTree = "<group>"; };
+		068430171C27A1CD00EAE723 /* AssetTypeNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetTypeNewViewController.h; sourceTree = "<group>"; };
+		068430181C27A1CD00EAE723 /* AssetTypeNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetTypeNewViewController.m; sourceTree = "<group>"; };
+		0684301A1C27A6BD00EAE723 /* AssetTypeNewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssetTypeNewViewController.xib; sourceTree = "<group>"; };
 		06B0D1821BD3A23800445030 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B0D1861BD3A23800445030 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		06B0D1881BD3A23800445030 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,6 +119,9 @@
 				06B0D19D1BD3AEF400445030 /* ItemStore.m */,
 				068430141C22E59900EAE723 /* AssetTypeViewController.h */,
 				068430151C22E59900EAE723 /* AssetTypeViewController.m */,
+				068430171C27A1CD00EAE723 /* AssetTypeNewViewController.h */,
+				068430181C27A1CD00EAE723 /* AssetTypeNewViewController.m */,
+				0684301A1C27A6BD00EAE723 /* AssetTypeNewViewController.xib */,
 				06B0D18B1BD3A23800445030 /* Assets.xcassets */,
 				06B0D18D1BD3A23800445030 /* LaunchScreen.storyboard */,
 				06B0D1901BD3A23800445030 /* Info.plist */,
@@ -192,6 +200,7 @@
 				06B0D18C1BD3A23800445030 /* Assets.xcassets in Resources */,
 				06B0D18F1BD3A23800445030 /* LaunchScreen.storyboard in Resources */,
 				06CA64A21BDDC30000118140 /* DetailViewController.xib in Resources */,
+				0684301B1C27A6BD00EAE723 /* AssetTypeNewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +215,7 @@
 				0684300D1C1EED0B00EAE723 /* ImageTransformer.m in Sources */,
 				06B0D1981BD3A53A00445030 /* ItemsViewController.m in Sources */,
 				068430121C1EF49B00EAE723 /* Item+CoreDataProperties.m in Sources */,
+				068430191C27A1CD00EAE723 /* AssetTypeNewViewController.m in Sources */,
 				06E2914C1BE455E6001C1665 /* ImageStore.m in Sources */,
 				06B0D18A1BD3A23800445030 /* AppDelegate.m in Sources */,
 				06D0AF331C0AEF4600D31DCF /* ItemCell.m in Sources */,

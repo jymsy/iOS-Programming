@@ -9,42 +9,51 @@
 #import "AssetTypeViewController.h"
 #import "ItemStore.h"
 #import "Item.h"
+#import "AssetTypeNewViewController.h"
 
 @implementation AssetTypeViewController
 
 -(instancetype)init
 {
-    return [super initWithStyle:UITableViewStylePlain];
-}
-
--(instancetype)initForPop
-{
-    self = [self init];
+    self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                  target:self action:@selector(save:)];
-        self.navigationItem.rightBarButtonItem = doneItem;
-        UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                    target:self action:@selector(cancel:)];
-        self.navigationItem.leftBarButtonItem = cancelItem;
+        UIBarButtonItem *addAssetType = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                  target:self action:@selector(add:)];
+        self.navigationItem.rightBarButtonItem = addAssetType;
     }
     return self;
 }
+
+//-(instancetype)initForPop
+//{
+//    self = [self init];
+//    if (self) {
+//        UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+//                                                                                  target:self action:@selector(save:)];
+//        self.navigationItem.rightBarButtonItem = doneItem;
+//        UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+//                                                                                    target:self action:@selector(cancel:)];
+//        self.navigationItem.leftBarButtonItem = cancelItem;
+//    }
+//    return self;
+//}
 
 -(instancetype)initWithStyle:(UITableViewStyle)style
 {
     return [self init];
 }
 
--(void)save:(id)sender
+-(void)add:(id)sender
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"add");
+    AssetTypeNewViewController *atnvc = [[AssetTypeNewViewController alloc] initWithNibName:@"AssetTypeNewViewController" bundle:nil];
+    [self.navigationController pushViewController:atnvc animated:YES];
 }
 
--(void)cancel:(id)sender
-{
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
+//-(void)cancel:(id)sender
+//{
+//    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+//}
 
 -(void)viewDidLoad
 {
