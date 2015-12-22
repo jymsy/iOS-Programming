@@ -10,5 +10,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AssetTypeNewViewController :UIViewController
-
+@property (nonatomic, copy) void (^dismissBlock) (void);
 @end

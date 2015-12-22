@@ -48,12 +48,30 @@
     NSLog(@"add");
     AssetTypeNewViewController *atnvc = [[AssetTypeNewViewController alloc] initWithNibName:@"AssetTypeNewViewController" bundle:nil];
     [self.navigationController pushViewController:atnvc animated:YES];
+    
+    
+//    atnvc.dismissBlock = ^{
+//        [self.tableView reloadData];
+//    };
+//    
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+//    navController.modalPresentationStyle = UIModalPresentationFormSheet;
+//    
+//    
+//    navController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    [self presentViewController:navController animated:YES completion:nil];
 }
 
 //-(void)cancel:(id)sender
 //{
 //    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 //}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
 
 -(void)viewDidLoad
 {

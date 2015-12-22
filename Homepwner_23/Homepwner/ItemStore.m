@@ -220,4 +220,12 @@
     return _allAssetTypes;
 }
 
+-(void)addAssetType:(NSString *)name
+{
+    NSManagedObject *type;
+    type = [NSEntityDescription insertNewObjectForEntityForName:@"AssetType" inManagedObjectContext:self.context];
+    [type setValue:name forKey:@"label"];
+    [_allAssetTypes addObject:type];
+}
+
 @end
